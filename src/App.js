@@ -54,8 +54,6 @@ function App() {
   };
 
 
-
-
   // Save data
   const handleSave = () => {
     const validOrders = Array.isArray(orders) ? orders : Array(partySize).fill("");
@@ -82,8 +80,6 @@ function App() {
   };
 
 
-
-
   const handleNextStage = (index) => {
     setData((prevData) =>
       prevData.map((order, i) => {
@@ -93,9 +89,9 @@ function App() {
           // Update table status based on the new stage
           const tableIndex = parseInt(order.tableNumber, 10) - 1;
           const tableStatusMap = {
-            1: "orderReceived", // Stage 1 corresponds to "Order Received"
-            2: "needsPayment",  // Stage 2 corresponds to "Needs Payment"
-            3: "needsCleaned",  // Stage 3 corresponds to "Needs Cleaned"
+            1: "orderReceived", 
+            2: "needsPayment",  
+            3: "needsCleaned", 
           };
   
           if (tableStatusMap[newStage]) {
@@ -111,11 +107,6 @@ function App() {
 
 
 
-
-
-
-
-  // Structure of application (React/html)
   return (
     <div>
       <Navbar bg="dark" variant="dark">
@@ -150,7 +141,6 @@ function App() {
               </Modal.Header>
               <Modal.Body>
                 <Form>
-                  {/* Table Number */}
                   <Form.Group className="mb-3">
                     <Form.Label>Table Number</Form.Label>
                     <Form.Control
@@ -161,7 +151,6 @@ function App() {
                     />
                   </Form.Group>
 
-                  {/* Party Size */}
                   <Form.Group className="mb-3">
                     <Form.Label>Number of People</Form.Label>
                     <Form.Control
@@ -173,7 +162,6 @@ function App() {
                     />
                   </Form.Group>
 
-                  {/* Dropdown Menus for Each Person */}
                   {Array.from({ length: partySize }).map((_, index) => (
                     <Form.Group className="mb-3" key={index}>
                       <Form.Label>Order for Person {index + 1}</Form.Label>
@@ -258,7 +246,7 @@ function App() {
                       default: { color: "white", text: "Start", next: "seated" },
                       seated: { color: "purple", text: "Table Seated", next: "ordered" },
                       ordered: { color: "yellow", text: "Table Ordered", next: "orderReceived" },
-                      orderReceived: { color: "orange", text: "Order Received", next: "needsCleaned" },
+                      orderReceived: { color: "orange", text: "Food Received", next: "needsCleaned" },
                       needsCleaned: { color: "red", text: "Needs Cleaned", next: "default" },
                     };
 
